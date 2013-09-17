@@ -3,57 +3,8 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>这是一个标题</title>
 </head>
 <body>
-    代码教程
-
-HTML代码准备
-<div class="photo-container">
-<div class="rotate-box">
-<img src="/cgi-bin/magurl?sid=CJiQoJ4Y23BFERJA&act=raw&url=http%3A%2F%2Fwinwall%2Ejpg"/>
-<div class="text">
-<h2>这是一个标题</h2>
-<p>这是一段图片相关的简介内容。。</p>
-</div>
-</div>
-</div>
-  CSS代码 用Perspective属性给图像设置透视视图，使用浮动是为了制作成一个相册列表。设置宽度使用了百分比，为了兼容响应式设计而制作，大家在浏览DEMO的时候可以缩小浏览器看看效果。
-.photo-container {
-perspective: 1200px; /* 透视视图 */
-width:45%;
-float:left;
-}
-.rotate-box {
-position:relative;
-transform-style: preserve-3d; /* 3D 转换 */
-transition:1s ease; /* 转换效果持续 1秒 */
-margin:10%;
-}
-.rotate-box img {width:100%;height:auto;}
-  背面文本样式，透明背景，并设置默认为反转180度，其次要将图像置于图像的背面，所以这里我们利用z轴来控制，CSS代码如下：
-.text {
-position:absolute;top:0;
-width:100%;height:100%;
-transform: rotateY(180deg) translateZ(1px); /* 反转180度 并设置z轴让其置于图片背面 */
-color:#666;
-text-align:center;
-opacity:.06;
-background:rgba(255,255,255,.9);
-transition: 1s opacity;
-}
-  使用Hover来触发动画
-.photo-container:hover .rotate-box{
-transform: rotateY(180deg);
-}
-.photo-container:hover .text{opacity:1}
-  通过伪元素（:after）给图像添加一个透视阴影，使整体更有3D立体感觉。
-.rotate-box:after {
-content:' ';
-display:block;
-width:100%;
-height:7vw; /* vw是移动设计备窗体单位*/
-transform:rotateX(90deg);
-background-image: radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 100%); /* radial-gradient 是径向渐变 */
 </body>
 </html>
