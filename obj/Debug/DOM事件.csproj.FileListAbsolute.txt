@@ -1,0 +1,6 @@
+E:\NET\学习视频\练习\DOM事件\DOM\bin\Debug\DOM.exe.config
+E:\NET\学习视频\练习\DOM事件\DOM\bin\Debug\DOM.exe
+E:\NET\学习视频\练习\DOM事件\DOM\bin\Debug\DOM.pdb
+E:\NET\学习视频\练习\DOM事件\DOM\obj\Debug\DOM事件.csprojResolveAssemblyReference.cache
+E:\NET\学习视频\练习\DOM事件\DOM\obj\Debug\DOM.exe
+E:\NET\学习视频\练习\DOM事件\DOM\obj\Debug\DOM.pdb

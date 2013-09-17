@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>注册</title>
+    <script type="text/javascript">
+        var leftSeconds = 10;
+        var intervalId;
+        function CountDown() {
+            var btnBeg = document.getElementById("btnReg");
+            if (btnBeg) {
+                if (leftSeconds <= 0) {
+                    btnBeg.value = "同意";
+                    btnBeg.disabled = "";
+                    clearInterval(intervalId);
+                }
+                else {
+                    btnBeg.value = "请仔细阅读协议(还剩" + leftSeconds + "秒)";
+                    leftSeconds--;
+                }
+            }
+        }
+        intervalId = setInterval("CountDown()", 1000);
+    </script>
+</head>
+<body>
+    <textarea></textarea>
+    <input id="btnReg" type="button" value="同意" disabled="disabled" />
+
+</body>
+</html>

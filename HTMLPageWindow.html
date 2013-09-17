@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>window对象,欢迎你&nbsp;&nbsp;&nbsp;</title>
+    <script type="text/css">
+
+
+    </script>
+    <script type="text/javascript">
+        function confirmdemo() {
+            if (confirm("是否进入？")) {
+                alert("进入了");
+            }
+            else {
+                alert("取消进入");
+            }
+        }
+        var erval;
+        function starInterval() {
+            erval = setInterval("alert('123')", 2000);
+        }
+        function stoperval() {
+            clearInterval(erval);
+        }
+        function left() {
+            var title = document.title;
+            var firstch = title.charAt(0);
+            var laftstr = title.substring(1, title.length);
+            document.title = laftstr + firstch;
+
+        }
+        function right() {
+            var title = document.title;
+            var firstch = title.charAt(title.length - 1);
+            var laftstr = title.substring(title.length - 1, 0);
+            document.title = firstch + laftstr;
+
+        }
+        function modifyClipboard() {
+            var txt = clipboardData.getData('Text');
+            txt = txt + ",本内容来自中国技术专区，转载请说明来源：" + location.href;
+            clipboardData.setData('Text', txt);
+            //clipboardData.setData('Text', clipboardData.getData('Text') + '本内容来自中国技术专区，转载请说明来源' + location.href);
+        }
+
+        document.write("<a href='MouseClick.html'>MouseClick</a>");
+
+        //getElementById方法
+        function txt1() {
+            var txt = document.getElementById("text1");
+            alert(txt.value);
+        }
+        function txt2() {
+            alert(text2.value);
+        }
+
+        //getElementByName方法
+        function btnClick1() {
+            var redios = document.getElementsByName("gender");
+            for (var i = 0; i < redios.length; i++) {
+                var radio = redios[i];
+                alert(radio.value);
+            }
+        }
+
+        //getElementsByTagName方法
+        function btnClick2() {
+            var inputs = document.getElementsByTagName("input");
+            for (var i = 0; i < inputs.length; i++) {
+                var input = inputs[i];
+                input.value = "hello";
+            }
+        }
+
+        function initEvent() {
+            var inputs = document.getElementsByTagName("input");
+            for (var i = 0; i < inputs.length; i++) {
+                var input = inputs[i];
+                input.onclick = btnClick;
+            }
+        }
+        function btnClick() {
+            var inputs = document.getElementsByTagName("input");
+            for (var i = 0; i < inputs.length; i++) {
+                var input = inputs[i];
+                if (input == window.event.srcElement) {
+                    input.value = "大家好";
+                }
+                else {
+                    input.value = "你好";
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="btn.value='OK';initEvent()">
+    <input type="button" value="confirm" onclick="confirmdemo()" /><hr />
+    <input type="button" value="navigate测试" onclick="location.href = 'MouseClick.html'" /><hr />
+    <!--重定向-->
+    <input type="button" value="starInterval测试" onclick="starInterval()" /><!--启动2秒钟刷新一次alert事件-->
+    <input type="button" value="clearInterval测试" onclick="stoperval()" /><hr />
+    <!--停止2秒钟刷新一次alert事件-->
+    <input type="button" value="Title向左滚动" onclick="time1 = setInterval('left()', 1000)" /><!--title左滚动-->
+    <input type="button" value="Title向右滚动" onclick="time2 = setInterval('right()', 1000)" /><!--title右滚动-->
+    <input type="button" value="停止向左滚动" onclick="clearInterval(time1)" />
+    <input type="button" value="停止向右滚动" onclick="clearInterval(time2)" /><hr />
+    <input type="button" id="btn" value="123" /><hr />
+
+    <a href="MouseClick.html" onclick="alert('禁止访问!');window.event.returnValue=false">禁止访问本网站</a><hr />
+
+    <table border="1" style="background-color: yellowgreen; border-color: red" oncopy="alert('温馨提示：本表单的内容禁止复制！');return false;">
+        <tr>
+            <td>温馨提示！
+            </td>
+            <td>本表单的内容是禁止复制的！
+            </td>
+        </tr>
+        <tr>
+            <td>温馨提示！
+            </td>
+            <td>本表单的内容是禁止复制的！
+            </td>
+        </tr>
+    </table>
+    <hr />
+
+    请输入手机号码：
+    <input type="text" /><br />
+    请再次输入手机号码：
+    <input type="text" onpaste="alert('为保证话费充值到您的手机，请手动输入!');return false" />（为保证安全，请勿黏贴）<hr />
+
+    <table oncopy="setTimeout('modifyClipboard()',100)">
+        <tr>
+            <td>温馨提示！
+            </td>
+            <td>本表单的内容是禁止复制的！（次奥，需要在IE上才又用）
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <a href="javascript:window.history.back()">后退</a>
+    <input type="button" value="后退" onclick="window.history.back()" /><hr />
+    <input type="button" value="走一个" onclick="document.write('hello')" />
+    <hr />
+    <input type="text" id="text1" />
+    <input type="button" value="获取text1值" onclick="txt1()" />
+    <form action="MouseClick.html">
+        <input type="text" id="text2" />
+        <input type="button" value="获取text2值" onclick="txt2()" />
+    </form>
+    <hr />
+    <input type="radio" name="gender" value="男" />男
+    <input type="radio" name="gender" value="女" />女
+    <input type="button" value="click" onclick="btnClick1()" /><hr />
+
+    <input type="text" />
+    <input type="text" /><br />
+    <input type="text" />
+    <input type="text" /><br />
+    <input type="button" value="bytgname" onclick="btnClick2()" /><hr />
+
+    <input type="button" value="你好" />
+    <input type="button" value="你好" />
+    <input type="button" value="你好" />
+    <input type="button" value="你好" />
+    <input type="button" value="你好" />
+
+    <hr />
+
+</body>
+</html>
