@@ -3,22 +3,110 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>简易计算器</title>
+    <script src="JS/js.js"></script>
     <script type="text/javascript">
         function calcClick() {
-            var value1 = document.getElementById("txt1").value;
-            var value2 = document.getElementById("txt2").value;
+            var value1 = document.getElementByname("txt1").value;
+            var value2 = document.getElementByname("txt2").value;
             value1 = parseInt(value1, 10);
             value2 = parseInt(value2, 10);
-            document.getElementById("txtResult").value = value1 + value2;
+            document.getElementByname("txtResult").value = value1 + value2;
         }
-
+        function add(obj) {
+            document.getElementById("txt1").value += obj.value;
+        }
+        function results() {
+            var obj = document.getElementById("txt1").value;
+            if (obj.indexOf("=") < 0)
+                document.getElementById("txt1").value += "=" + eval(obj);
+        }
+        function clears() {
+            document.getElementById("txt1").value = "";
+        }
     </script>
 </head>
 <body>
-    <input type="text" id="txt1" />+
-    <input type="text" id="txt2" />
+    <link href="JS/js.js" />
+    <input type="text" name="txt1" />+<input type="text" name="txt2" />
     <input type="button" value="=" onclick="calcClick()" />
-    <input type="text" id="txtResult" readonly="readonly" />
+    <input type="text" name="txtResult" readonly="readonly" />
+    <hr />
+    <fieldset>
+        <legend>简易计算器</legend>
+        <table border="1" cellspacing="10" cellpadding="0">
+            <tr>
+                <td nowrap="nowrap">
+                    <input type="button" onclick="add(this)" id="btn" name="btn" value="1" /></td>
+                <td>
+                    <input type="button" onclick="add(this)" name="btn" value="2" /></td>
+                <td>
+                    <input type="button" onclick="add(this)" name="btn" value="3" />
+                </td>
+                <td>
+                    <input type="button" onclick="clears()" name="btn" value="C" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" onclick="add(this)" name="btn" value="4" /></td>
+                <td>
+                    <input type="button" onclick="add(this)" name="btn" value="5" /></td>
+                <td>
+                    <input type="button" onclick="add(this)" name="btn" value="6" />
+                </td>
+                <td>
+                    <input type="button" onclick="add(this)" name="btn" value="+" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" onclick="add(this)" name="btn" value="7" /></td>
+                <td>
+                    <input type="button" onclick="add(this)" name="btn" value="8" /></td>
+                <td>
+                    <input type="button" onclick="add(this)" name="btn" value="9" /></td>
+                <td>
+                    <input type="button" onclick="add(this)" name="btn" value=" -" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" onclick="add(this)" name="btn" value="0" />
+                </td>
+                <td>
+                    <input type="button" onclick="add(this)" name="btn" value="*" />
+                </td>
+
+                <td>
+                    <input type="button" onclick="add(this)" name="btn" value="/" />
+                </td>
+                <td>
+                    <input type="button" onclick="results()" name="btn" value="=" />
+                </td>
+            </tr>
+        </table>
+        <table border="0">
+            <tr>
+                <td>
+                    <input type="text" readonly="readonly" id="txt1" /></td>
+            </tr>
+        </table>
+    </fieldset>
+    <p>呵呵，本页面禁止使用右键！</p>
+    <p>呵呵，本页面禁止使用右键！</p>
+    <p>呵呵，本页面禁止使用右键！</p>
+    <p>呵呵，本页面禁止使用右键！</p>
+    <p>呵呵，本页面禁止使用右键！</p>
+    <p>呵呵，本页面禁止使用右键！</p>
+
+    <fieldset>
+
+        <legend>提交数据就变灰色</legend>
+        <input type="submit" value="提交" onclick="hui(this)" />
+        <form action="#" name="ftop" method="get">
+            <input value='提交' onclick="hui(this)" name="nihao" />
+        </form>
+    </fieldset>
 </body>
 </html>
