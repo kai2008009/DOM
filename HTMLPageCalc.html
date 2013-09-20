@@ -7,30 +7,36 @@
     <script src="JS/js.js"></script>
     <script type="text/javascript">
         function calcClick() {
-            var value1 = document.getElementByname("txt1").value;
-            var value2 = document.getElementByname("txt2").value;
+            var value1 = document.getElementById("txt1").value;
+            var value2 = document.getElementById("txt2").value;
             value1 = parseInt(value1, 10);
             value2 = parseInt(value2, 10);
-            document.getElementByname("txtResult").value = value1 + value2;
+            document.getElementById("txtResult").value = value1 + value2;
         }
         function add(obj) {
-            document.getElementById("txt1").value += obj.value;
+            document.getElementById("txt3").value += obj.value;
         }
         function results() {
-            var obj = document.getElementById("txt1").value;
-            if (obj.indexOf("=") < 0)
-                document.getElementById("txt1").value += "=" + eval(obj);
+            var obj = document.getElementById("txt3").value;
+            if (obj == false) {
+                alert("请输入值");
+                return;
+            }
+            if (obj.indexOf("=") < 0) {
+                document.getElementById("txt3").value += "=" + eval(obj);
+            }
         }
         function clears() {
-            document.getElementById("txt1").value = "";
+            document.getElementById("txt3").value = "";
         }
     </script>
 </head>
 <body>
-    <link href="JS/js.js" />
-    <input type="text" name="txt1" />+<input type="text" name="txt2" />
+    <link href="JS/js.js" rel="icon" />
+    <input type="text" id="txt1" />+<input type="text" id="txt2" />
     <input type="button" value="=" onclick="calcClick()" />
-    <input type="text" name="txtResult" readonly="readonly" />
+    <input type="text" id="txtResult" readonly="readonly" />
+
     <hr />
     <fieldset>
         <legend>简易计算器</legend>
@@ -82,14 +88,14 @@
                     <input type="button" onclick="add(this)" name="btn" value="/" />
                 </td>
                 <td>
-                    <input type="button" onclick="results()" name="btn" value="=" />
+                    <input type="button" onclick="results()" name="btn1" value="=" />
                 </td>
             </tr>
         </table>
         <table border="0">
             <tr>
                 <td>
-                    <input type="text" readonly="readonly" id="txt1" /></td>
+                    <input type="text" readonly="readonly" id="txt3" /></td>
             </tr>
         </table>
     </fieldset>
@@ -108,5 +114,8 @@
             <input value='提交' onclick="hui(this)" name="nihao" />
         </form>
     </fieldset>
+
+    <!--<meta http-equiv="refresh" content="10;url=HTMLPageReg.html" />10秒钟刷新一次-->
+
 </body>
 </html>
